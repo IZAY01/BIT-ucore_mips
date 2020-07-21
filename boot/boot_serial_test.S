@@ -7,6 +7,7 @@
 #define FLASH_START 0xBE000000
 #define FLASH_SIZE  0x01000000
 #define ELF_MAGIC 0x464C457F
+#define SERIAL_ADDRESS 0x????????
 
 /* off = offset from s0 */
 /* load a 32bit word from Flash, 

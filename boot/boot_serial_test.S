@@ -35,8 +35,19 @@
 .globl __start
 __start:
   nop
+  b serial_test
   b load_elf
   nop
+
+# for serial test
+serial_test:
+  la $t0, SERIAL_ADDRESS
+  lb $t1, 'A'
+loop_write:
+  sb $t1, 0($t0)
+  b loop_write
+  nop
+
 
 load_elf:
   #dirty hack

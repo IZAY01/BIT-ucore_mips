@@ -185,3 +185,9 @@ boot/loader.bin: boot/bootasm.S
 	$(CC) $(CFLAGS) -g -c -o boot/loader.o $^
 	$(LD) $(LDFLAGS) -Ttext 0xbfc00000 -o boot/loader boot/loader.o
 	$(OBJCOPY) -O binary -j .text -S boot/loader $@
+
+boot/loader_test.bin: boot/boot_serial_test.S
+	$(CC) $(CFLAGS) -g -c -o boot/loader_test.o $^
+	$(LD) $(LDFLAGS) -Ttext 0xbfc00000 -o boot/loader_test boot/loader_test.o
+	$(OBJCOPY) -O binary -j .text -S boot/loader_test $@
+

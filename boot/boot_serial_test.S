@@ -8,6 +8,7 @@
 #define FLASH_SIZE  0x01000000
 #define ELF_MAGIC 0x464C457F
 #define SERIAL_ADDRESS 0xb0001000
+#define LSR_ADDR 0xb0001014
 
 /* off = offset from s0 */
 /* load a 32bit word from Flash, 
@@ -43,10 +44,15 @@ __start:
 # for serial test
 serial_test:
   la $t0, SERIAL_ADDRESS
-  lb $t1, 'A'
+  li $t1, 0x41
+reg_test:
+  lb $t2, LSR_ADDR
+  andi $t4, $t2, 0x20 
+  li $t3, 0
+  beq $t4, $t3, reg_test 
 loop_write:
-  sb $t1, 0($t0)
-  b loop_write
+  sw $t1, 0($t0)
+  b reg_test
   nop
 
 

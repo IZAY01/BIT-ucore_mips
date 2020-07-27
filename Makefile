@@ -1,6 +1,6 @@
 ON_FPGA :=y
 
-CROSS_COMPILE ?= mipsel-linux-gnu-
+CROSS_COMPILE ?= mipsel-linux-
 
 # eliminate default suffix rules
 .SUFFIXES: .c .S .h
@@ -186,7 +186,7 @@ boot/loader.bin: boot/bootasm.S
 	$(LD) $(LDFLAGS) -Ttext 0xbfc00000 -o boot/loader boot/loader.o
 	$(OBJCOPY) -O binary -j .text -S boot/loader $@
 
-boot/loader_test.bin: boot/boot_serial_test.S
+boot/loader_test.bin: boot/boot_seg.S
 	$(CC) $(CFLAGS) -g -c -o boot/loader_test.o $^
 	$(LD) $(LDFLAGS) -Ttext 0xbfc00000 -o boot/loader_test boot/loader_test.o
 	$(OBJCOPY) -O binary -j .text -S boot/loader_test $@

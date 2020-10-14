@@ -1,6 +1,6 @@
 ON_FPGA :=y
 
-CROSS_COMPILE ?= mipsel-linux-
+CROSS_COMPILE ?= mipsel-linux-gnu-
 
 # eliminate default suffix rules
 .SUFFIXES: .c .S .h

@@ -9,7 +9,7 @@ def isjump(line):
       return True
   return False
 
-OBJDUMP='mips-sde-elf-objdump'
+OBJDUMP='mipsel-linux-gnu-objdump'
 
 if len(sys.argv) < 2:
   print 'usage: check_delay_slot.py [file]'
